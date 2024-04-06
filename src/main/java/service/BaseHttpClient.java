@@ -4,6 +4,7 @@ import io.restassured.config.RedirectConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.config.SSLConfig;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
@@ -14,17 +15,13 @@ public class BaseHttpClient {
             .sslConfig(new SSLConfig().relaxedHTTPSValidation())
             .redirect(new RedirectConfig().followRedirects(true));
 
+    private final RequestSpecification requestSpec = given().config(config).header("Content-Type", JSON);
+
     protected ValidatableResponse doPostRequest(String uri, Object body) {
-        return given().config(config)
-                .header("Content-Type", JSON)
-                .body(body)
-                .post(uri).then();
+        return requestSpec.body(body).post(uri).then();
     }
 
     protected void doDeleteRequest(String uri, String accessToken) {
-        given().config(config)
-                .header("Content-Type", JSON)
-                .auth().oauth2(accessToken)
-                .get(uri);
+        requestSpec.auth().oauth2(accessToken).get(uri);
     }
 }
