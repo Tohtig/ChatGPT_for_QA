@@ -11,9 +11,11 @@ public class WebDriverParams {
         /*  В Я.браузере должны отрабатывать 11 из 11 тестов. Включить BuilderSectionsTest */
 //        System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
         /*  В хроме отрабатывают 10 из 11 тестов */
-        Configuration.browser = "chrome";
+//        Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 15_000L;
+
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
