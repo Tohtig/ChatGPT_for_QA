@@ -1,6 +1,7 @@
 package registration;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Tag;
 import service.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
@@ -23,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Story("Регистрация нового пользователя")
 @Link(name = "Связанная задача", type = "issue", url = "https://github.com/your-repo/your-project/issues/1")
 @Owner("Tohtig")
+@Tag("automated")
 public class RegistrationTest extends WebDriverParams {
     private final Faker faker = new Faker(new Locale("en"));
     private final APIServices apiServices = new APIServices();

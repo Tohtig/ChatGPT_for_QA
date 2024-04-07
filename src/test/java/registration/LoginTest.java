@@ -1,13 +1,10 @@
 package registration;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.*;
 import service.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import pages.AppHeaderPage;
 import pages.MainPage;
 import pages.PasswordRecoveryPage;
@@ -24,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Feature("Вход в систему")
 @Story("Вход пользователя")
 @Link(name = "HOMEWORK-1183 Интеграция Allure Reports", type = "issue", url = "https://jira.autotests.cloud/browse/HOMEWORK-1183")
+@Tag("automated")
 @Owner("Tohtig")
 public class LoginTest extends WebDriverParams {
     private final Faker faker = new Faker(new Locale("en"));
