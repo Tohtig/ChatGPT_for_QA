@@ -1,5 +1,6 @@
 package registration;
 
+import io.qameta.allure.*;
 import service.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
@@ -19,6 +20,11 @@ import java.util.Locale;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("Тесты профиля")
+@Feature("Профиль")
+@Story("Переходы и взаимодействия в профиле")
+@Link(name = "HOMEWORK-1183 Интеграция Allure Reports", type = "issue", url = "https://jira.autotests.cloud/browse/HOMEWORK-1183")
+@Owner("Tohtig")
 public class ProfileTest extends WebDriverParams {
     private final Faker faker = new Faker(new Locale("en"));
     private final APIServices apiServices = new APIServices();
@@ -40,7 +46,10 @@ public class ProfileTest extends WebDriverParams {
         apiServices.deleteAccounts(testData);
     }
 
+
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Проверка перехода в личный кабинет по клику на \"Личный кабинет\"")
     @DisplayName("Проверка перехода в личный кабинет по клику на \"Личный кабинет\"")
     public void checkEnterProfileFromAppHeader() {
         open(MainPage.URL);
@@ -50,6 +59,8 @@ public class ProfileTest extends WebDriverParams {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Проверка перехода из личного кабинета в конструктор по клику на \"Конструктор\"")
     @DisplayName("Переход из личного кабинета в конструктор. Проверка перехода по клику на \"Конструктор\"")
     public void checkMovingFromProfileToBurgerBuilder() {
         open(MainPage.URL);
@@ -60,6 +71,8 @@ public class ProfileTest extends WebDriverParams {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Проверка перехода из личного кабинета в конструктор по клику на логотип \"Stellar Burgers\"")
     @DisplayName("Переход из личного кабинета в конструктор. Проверка перехода по клику на логотип \"Stellar Burgers\"")
     public void checkMovingFromProfileToLogo() {
         open(MainPage.URL);
@@ -70,6 +83,8 @@ public class ProfileTest extends WebDriverParams {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Проверка выхода из аккаунта по кнопке \"Выйти\" в личном кабинете")
     @DisplayName("Выход из аккаунта. Проверка выхода по кнопке \"Выйти\" в личном кабинете")
     public void checkExitByExitButtonFromProfile() {
         open(MainPage.URL);

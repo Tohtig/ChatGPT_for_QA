@@ -1,5 +1,6 @@
 package registration;
 
+import io.qameta.allure.*;
 import service.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
@@ -17,6 +18,11 @@ import java.util.Locale;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("Тесты регистрации")
+@Feature("Регистрация")
+@Story("Регистрация нового пользователя")
+@Link(name = "Связанная задача", type = "issue", url = "https://github.com/your-repo/your-project/issues/1")
+@Owner("Tohtig")
 public class RegistrationTest extends WebDriverParams {
     private final Faker faker = new Faker(new Locale("en"));
     private final APIServices apiServices = new APIServices();
@@ -29,6 +35,8 @@ public class RegistrationTest extends WebDriverParams {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Успешная регистрация нового пользователя")
     @DisplayName("Успешная регистрация")
     public void successRegistration() {
         account = new UserAccount().
@@ -43,6 +51,8 @@ public class RegistrationTest extends WebDriverParams {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Описание теста: Проверка ошибки для некорректного пароля. Минимальный пароль шесть символов")
     @DisplayName("Проверка ошибки для некорректного пароля. Минимальный пароль шесть символов")
     public void registrationFiveCharPassReject() {
         account = new UserAccount().

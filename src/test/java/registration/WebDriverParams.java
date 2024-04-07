@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 public class WebDriverParams {
 
     private void setupWebDriver() {
-        /*  В Я.браузере отрабатывают 11 из 11 тестов */
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
+        /*  В Я.браузере должны отрабатывать 11 из 11 тестов. Включить BuilderSectionsTest */
+//        System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
         /*  В хроме отрабатывают 10 из 11 тестов */
-//        Configuration.browser = "chrome";
-//        Configuration.browserSize = "1920x1080";
-//        Configuration.timeout = 15_000L;
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 15_000L;
     }
 
     @BeforeEach
